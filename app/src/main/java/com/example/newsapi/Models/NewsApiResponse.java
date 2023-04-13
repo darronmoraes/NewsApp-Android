@@ -5,7 +5,7 @@ import java.util.List;
 public class NewsApiResponse {
     String status;
     int totalResults;
-    List<NewsHeadlines> articles;
+    List<Articles> articles;
 
     public String getStatus() {
         return status;
@@ -23,11 +23,11 @@ public class NewsApiResponse {
         this.totalResults = totalResults;
     }
 
-    public List<NewsHeadlines> getArticles() {
+    public List<Articles> getArticles() {
         return articles;
     }
 
-    public void setArticles(List<NewsHeadlines> articles) {
+    public void setArticles(List<Articles> articles) {
         this.articles = articles;
     }
 }

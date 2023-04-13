@@ -8,13 +8,13 @@ import android.app.ProgressDialog;
 import android.os.Bundle;
 
 import com.example.newsapi.Models.NewsApiResponse;
-import com.example.newsapi.Models.NewsHeadlines;
+import com.example.newsapi.Models.Articles;
 
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
-    // objects
+    // objects views and adapter
     RecyclerView recyclerView;
     CustomAdapter customAdapter;
 
@@ -30,27 +30,25 @@ public class MainActivity extends AppCompatActivity {
         dialog.show();
 
         RequestManager manager = new RequestManager(this);
-        manager.getNewsHeadlines(listener,"category",null);
+        manager.getNewsHeadlines(listener,"general",null);
     }
 
-    private OnFetchDataListener<NewsApiResponse> listener = new OnFetchDataListener<NewsApiResponse>() {
+    private final OnFetchDataListener<NewsApiResponse> listener = new OnFetchDataListener<NewsApiResponse>() {
         @Override
-        public void onFetchData(List<NewsHeadlines> list, String message) {
+        public void onFetchData(List<Articles> list, String message) {
             showNews(list);
             dialog.dismiss();
         }
-
         @Override
         public void onError(String message) {
-
         }
     };
 
-    private void showNews(List<NewsHeadlines> list) {
-        recyclerView = findViewById(R.id.recycle_main);
+    private void showNews(List<Articles> list) {
+        recyclerView = findViewById(R.id.recyclerView_main);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new GridLayoutManager(this,1));
-        customAdapter = new CustomAdapter(this,list);
+        customAdapter = new CustomAdapter(this, list);
         recyclerView.setAdapter(customAdapter);
     }
 }

@@ -28,25 +28,21 @@ public class RequestManager {
 
 
     // manage ur api calls
-    public  void getNewsHeadlines(OnFetchDataListener listener,String category, String query){
+    public void getNewsHeadlines(OnFetchDataListener listener,String category, String query){
         CallNewsApi callNewsApi = retrofit.create(CallNewsApi.class);
-        Call<NewsApiResponse> call = callNewsApi.callHeadlines("in",category,query,context.getString(R.string.api_key));
-
+        Call<NewsApiResponse> call = callNewsApi.callHeadlines("us", category, query, context.getString(R.string.api_key));
 
         try {
             call.enqueue(new Callback<NewsApiResponse>() {
                 @Override
                 public void onResponse(Call<NewsApiResponse> call, Response<NewsApiResponse> response) {
                     if (!response.isSuccessful()){
-                        Toast.makeText(context, "Error !!!", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(context, "Error", Toast.LENGTH_SHORT).show();
                     }
-
                     listener.onFetchData(response.body().getArticles(), response.message());
                 }
-
                 @Override
                 public void onFailure(Call<NewsApiResponse> call, Throwable t) {
-
                     listener.onError("Request failed!");
                 }
             });
@@ -56,6 +52,7 @@ public class RequestManager {
         }
     }
 
+    // news Api response interface
     public interface CallNewsApi{
         @GET("top-headlines")
         Call<NewsApiResponse> callHeadlines(

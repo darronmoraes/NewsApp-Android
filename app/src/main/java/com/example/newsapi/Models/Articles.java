@@ -1,6 +1,6 @@
 package com.example.newsapi.Models;
 
-public class NewsHeadlines {
+public class Articles {
     Source source = null;
     String author = "";
     String title = "";
