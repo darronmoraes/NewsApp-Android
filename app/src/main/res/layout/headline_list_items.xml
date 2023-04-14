@@ -31,7 +31,7 @@
             <TextView
                 android:id="@+id/tv_source"
                 android:textSize="18sp"
-                android:textColor="#AD5C5C5C"
+                android:textColor="#ADFF0000"
                 android:maxLines="1"
                 android:layout_marginTop="6dp"
                 android:layout_width="match_parent"

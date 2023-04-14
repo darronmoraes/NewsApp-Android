@@ -26,7 +26,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         dialog = new ProgressDialog(this);
-        dialog.setTitle("fetching news articles...");
+        dialog.setTitle("getting latest headlines...");
         dialog.show();
 
         RequestManager manager = new RequestManager(this);
